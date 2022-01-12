@@ -2,9 +2,13 @@
   "sections": {
     "main": {
       "type": "main-page"
+    },
+    "tarefa1": {
+      "type": "tarefa1"
     }
   },
   "order": [
-    "main"
+    "main",
+    "tarefa1"
   ]
 }

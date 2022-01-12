@@ -1,0 +1,56 @@
+<script src="{{ 'tarefa1.js' | asset_url }}" defer></script>
+
+<shopify-academy-tarefa1>
+  <h1>{{ section.settings.title }}</h1>
+
+  {% for block in section.blocks %}
+    {% if block.type == 'product' %}
+      {% assign product = all_products[block.settings.product] %}
+      <div>
+        <h2>{{ product.title }}</h2>
+        <h3>{{ block.settings.product }}</h3>
+      </div>
+    {% endif %}
+  {% endfor %}
+
+  <button id="addAllProducts">
+    Adicionar produtos
+  </button>
+</shopify-academy-tarefa1>
+
+{% schema %}
+{
+  "name": "Tarefa 1",
+  "tag": "section",
+  "class": "section-tarefa-1",
+  "settings": [
+    {
+     "type": "header",
+     "content": "Teste header"
+    },
+    {
+     "type": "text",
+     "id": "title",
+     "label": "Título"
+    }
+  ],
+  "blocks": [
+    {
+      "name": "Produto",
+      "type": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produto"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tarefa 1"
+    }
+  ]
+}
+{% endschema %}
