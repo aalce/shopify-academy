@@ -1,17 +1,21 @@
 <script src="{{ 'tarefa1.js' | asset_url }}" defer></script>
+<link rel="stylesheet" href="{{ 'tarefa1.css' | asset_url }}">
 
 <shopify-academy-tarefa1>
   <h1>{{ section.settings.title }}</h1>
 
-  {% for block in section.blocks %}
-    {% if block.type == 'product' %}
-      {% assign product = all_products[block.settings.product] %}
-      <div>
-        <h2>{{ product.title }}</h2>
-        <h3>{{ block.settings.product }}</h3>
-      </div>
-    {% endif %}
-  {% endfor %}
+  <div class="items-container page-width">
+    {% for block in section.blocks %}
+      {% if block.type == 'product' %}
+        {% assign product = all_products[block.settings.product] %}
+        <div class="item" data-id="{{ product.first_available_variant.id }}">
+          <img src="{{ product.featured_image | image_url: width: 500, height: 500 }}" alt="">
+          <h2>{{ product.title }}</h2>
+          <h3>{{ block.settings.product }}</h3>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
 
   <button id="addAllProducts">
     Adicionar produtos

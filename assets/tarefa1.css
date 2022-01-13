@@ -1,3 +1,18 @@
 shopify-academy-tarefa1 {
   display: block;
 }
+
+shopify-academy-tarefa1 .items-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+
+shopify-academy-tarefa1 .items-container .item {
+  width: 25%;
+}
+
+shopify-academy-tarefa1 .items-container .item img {
+  width: 100%;
+}
