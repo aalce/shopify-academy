@@ -1,0 +1,125 @@
+<script src="{{ 'sallve-slider.js' | asset_url }}" defer></script>
+<link rel="stylesheet" href="{{ 'sallve-slider.css' | asset_url }}">
+
+<sallve-slider class="sallve-slider">
+
+  <div class="sallve-slider__inner">
+    {% for block in section.blocks %}
+      <div class="sallve-slider__slide">
+        <div class="slide_bg" style="background-image: url('{{ block.settings.image | image_url: width: 1200 }}');"></div>
+        <div class="slide_content slide_content--{{ block.settings.vertical_alignment }} slide_content--{{ block.settings.horizontal_alignment }}">
+          <div class="slide_content__inner">
+            {% if block.settings.header != blank %}
+              <p class="h1">{{ block.settings.header }}</p>
+            {% endif %}
+            {% if block.settings.text != blank %}
+              <p>{{ block.settings.text }}</p>
+            {% endif %}
+            {% if block.settings.button_title != blank and block.settings.button_url != blank %}
+              <a href="{{ block.settings.button_url }}">{{ block.settings.button_title }}</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</sallve-slider>
+
+{% schema %}
+{
+  "name": "Sallve Slider",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    
+  ],
+  "blocks": [
+    {
+      "name": "Slide",
+      "type": "slide",
+      "settings": [
+        {
+         "type": "image_picker",
+         "id": "image",
+         "label": "Image",
+         "info": "Imagem do slide"
+        },
+        {
+         "type": "text",
+         "id": "header",
+         "label": "Header"
+        },
+        {
+         "type": "richtext",
+         "id": "text",
+         "label": "Text"
+        },
+        {
+         "type": "header",
+         "content": "Button"
+        },
+        {
+         "type": "text",
+         "id": "button_title",
+         "label": "Title"
+        },
+        {
+         "type": "url",
+         "id": "button_url",
+         "label": "Link"
+        },
+        {
+         "type": "header",
+         "content": "Alinhamento"
+        },
+        {
+          "type": "select",
+          "id": "vertical_alignment",
+          "label": "Vertical alignment",
+          "options": [
+            {
+              "value": "top",
+              "label": "Top"
+            },
+            {
+              "value": "vmiddle",
+              "label": "Middle"
+            },
+            {
+              "value": "bottom",
+              "label": "Bottom"
+            }
+          ],
+          "default": "vmiddle"
+        },
+        {
+          "type": "select",
+          "id": "horizontal_alignment",
+          "label": "Horizontal alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "hmiddle",
+              "label": "Middle"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "hmiddle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sallve Slider"
+    }
+  ]
+}
+{% endschema %}

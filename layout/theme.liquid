@@ -29,7 +29,11 @@
 
     {% render 'meta-tags' %}
 
+    <script src="{{ 'jquery.js' | asset_url }}" defer="defer"></script>
+    <script src="{{ 'slick.min.js' | asset_url }}" defer="defer"></script>
+    
     <script src="{{ 'global.js' | asset_url }}" defer="defer"></script>
+    
     {{ content_for_header }}
 
     {%- liquid
@@ -186,6 +190,7 @@
       }
     {% endstyle %}
 
+    {{ 'slick.css' | asset_url | stylesheet_tag }}
     {{ 'base.css' | asset_url | stylesheet_tag }}
 
     {%- unless settings.type_body_font.system? -%}
