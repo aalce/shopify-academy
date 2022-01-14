@@ -6,6 +6,7 @@
   <div class="sallve-slider__inner">
     {% for block in section.blocks %}
       {% assign header = block.settings.header %}
+      
       <div class="sallve-slider__slide">
         <div class="slide_bg" style="background-image: url('{{ block.settings.image | image_url: width: 1200 }}');"></div>
         <div class="slide_content slide_content--{{ block.settings.vertical_alignment }} slide_content--{{ block.settings.horizontal_alignment }}">
